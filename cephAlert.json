@@ -1,0 +1,28 @@
+{
+    "regions": "jiaDing;caoHeJing;jiaDingOS",
+    "jiaDing":{
+        "addr": "211.159.202.215:1234"  
+        },
+    "jiaDingOS":{
+        "addr": "103.211.45.13:1234"    
+        },
+    "caoHeJing":{
+            "addr": "101.132.221.164:1234"
+        },
+    "instructionSet":{
+            "help" : "01: ceph cluster status 
+                     02: ceph cluster status detail
+                     03: ceph pg repair",
+            "status":"show all cluster status",
+            "add": "admin add member to whiteList",
+            "adjust": "adjust alert check time(seconds)",
+            "01": "ceph -s",
+            "02": "ceph health detail",    
+            "03": "ceph health detail | grep pg |grep -v pgs |awk '{print $2}' |xargs -n 1 -i ceph pg repair {}"
+        },
+
+    "whiteList": {
+            "ChengPeng" : "admin",
+            "ZhaoZhiCheng": "member"
+    }
+}

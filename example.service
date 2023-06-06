@@ -1,0 +1,16 @@
+[Unit]
+Description=ceph cluster alert control service
+After=network-online.target firewalld.service
+Wants=network-online.target
+
+[Service]
+Type=simple
+# the default is not to use systemd for cgroups because the delegate issues still
+# exists and systemd currently does not support the cgroup feature set required
+# for containers run by docker
+ExecStart=/root/chengpeng/ceph/alert-control
+ExecStop=/bin/kill -s HUP $MAINPID
+Restart=always
+
+[Install]
+WantedBy=multi-user.target

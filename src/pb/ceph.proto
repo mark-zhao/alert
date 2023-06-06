@@ -1,0 +1,32 @@
+syntax = "proto3";
+
+//SRC_DIR=./src/pb ; protoc -I=$SRC_DIR --go_out=plugins=grpc:$SRC_DIR ./src/pb/ceph.proto
+package pb;
+
+message CephRequest {
+    string instruction = 2;
+}
+
+message CephResponse {
+    string result = 1;
+}
+
+message CephHeartBeatRequest{
+    string ping = 1;
+}
+
+message CephHeartBeatResponse {
+    string pong = 2;
+}
+
+service CephService {
+    rpc GetClusterStatus(CephRequest) returns (CephResponse);
+    rpc HeartBeat(CephHeartBeatRequest) returns (CephHeartBeatResponse);
+}
+
+//service CephHeartBeatService {
+//    rpc HeartBeat(CephHeartBeatRequest) returns (CephHeartBeatResponse);
+//}
+
+
+
